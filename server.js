@@ -8,7 +8,7 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-const OPEN_AI_SECRET="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";
+const OPEN_AI_SECRET= process.env.OPEN_AI_SECRET
 
 app.post('/completions' , async (req,res) => {
     const options = {
