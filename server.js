@@ -10,21 +10,7 @@ dotenv.config()
 app.use(express.json())
 app.use(cors())
 
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*")
-    res.header(
-      "Access-Control-Allow-Headers",
-      "Origin, X-Requested, Content-Type, Accept Authorization"
-    )
-    if (req.method === "OPTIONS") {
-      res.header(
-        "Access-Control-Allow-Methods",
-        "POST, PUT, PATCH, GET, DELETE"
-      )
-      return res.status(200).json({})
-    }
-    next()
-  })
+
 
 const OPEN_AI_SECRET=process.env.OPEN_AI_SECRET;
 app.post('/completions' , async (req,res) => {
@@ -32,7 +18,8 @@ app.post('/completions' , async (req,res) => {
         method: 'POST',
         headers: {
             "Authorization": `Bearer ${OPEN_AI_SECRET}`,
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*"
         },
         body: JSON.stringify({
             model: 'gpt-3.5-turbo',
