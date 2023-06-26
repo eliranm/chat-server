@@ -2,7 +2,6 @@ const PORT = process.env.PORT || 8000; // Use the PORT value from the environmen
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const fetch = require('node-fetch'); // Add the 'node-fetch' package to make HTTP requests in Node.js
 const app = express();
 
 dotenv.config();
@@ -28,6 +27,7 @@ app.post('/completions', async (req, res) => {
   try {
     const response = await fetch('https://api.openai.com/v1/chat/completions', options);
     const data = await response.json();
+    res.header('Access-Control-Allow-Origin', '*');
     res.send(data);
   } catch (err) {
     console.error(err);
