@@ -1,7 +1,7 @@
 const PORT = 8000;
-import express from 'express'
-import cors from 'cors'
-import dotenv from 'dotenv'
+const express = require('express')
+const cors = require('cors')
+const dotenv = require('dotenv')
 const app = express()
 
 dotenv.config()
