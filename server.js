@@ -13,8 +13,6 @@ const OPEN_AI_SECRET = process.env.OPEN_AI_SECRET;
 
 app.post('/completions', async (req, res) => {
 
-  console.log(req.body);
-
   const options = {
     method: 'POST',
     headers: {
@@ -27,6 +25,7 @@ app.post('/completions', async (req, res) => {
       max_tokens: 100,
     }),
   };
+  console.log(process.env.TEST , 'test')
   try {
     const response = await fetch('https://api.openai.com/v1/chat/completions', options);
     const data = await response.json();
