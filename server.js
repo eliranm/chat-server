@@ -12,6 +12,9 @@ app.use(cors());
 const OPEN_AI_SECRET = process.env.OPEN_AI_SECRET;
 
 app.post('/completions', async (req, res) => {
+
+  console.log(req.body);
+  
   const options = {
     method: 'POST',
     headers: {
@@ -27,7 +30,6 @@ app.post('/completions', async (req, res) => {
   try {
     const response = await fetch('https://api.openai.com/v1/chat/completions', options);
     const data = await response.json();
-    res.header('Access-Control-Allow-Origin', '*');
     res.send(data);
   } catch (err) {
     console.error(err);
