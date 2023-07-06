@@ -22,7 +22,8 @@ app.post('/completions', async (req, res) => {
     body: JSON.stringify({
       model: 'gpt-3.5-turbo',
       messages: req.body.messages,
-      max_tokens: 2000
+      max_tokens: 2000,
+      stream: true
     }),
   };
   try {
