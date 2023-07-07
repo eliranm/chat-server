@@ -20,9 +20,9 @@ app.post('/completions', async (req, res) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      model: 'gpt-3.5-turbo-16k',
+      model: 'gpt-4',
       messages: req.body.messages,
-      max_tokens: 2000,
+      max_tokens: 8096,
       stream: true
     }),
   };
