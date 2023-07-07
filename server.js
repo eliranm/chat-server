@@ -23,7 +23,7 @@ app.post('/completions', async (req, res) => {
       model: 'gpt-4',
       messages: req.body.messages,
       max_tokens: 8096,
-      stream: true
+      stream: false
     }),
   };
   try {
